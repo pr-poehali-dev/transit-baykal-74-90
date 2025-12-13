@@ -258,11 +258,21 @@ const Index = () => {
                     </g>
                     
                     <g id="buses">
-                      <g transform="translate(300, 250)">
+                      <g>
+                        <animateMotion 
+                          dur="15s" 
+                          repeatCount="indefinite"
+                          path="M 100 400 Q 150 350, 200 300 T 350 200 T 500 150 T 650 120"
+                        />
                         <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#0EA5E9"/>
                         <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">74</text>
                       </g>
-                      <g transform="translate(520, 270)">
+                      <g>
+                        <animateMotion 
+                          dur="18s" 
+                          repeatCount="indefinite"
+                          path="M 150 450 Q 200 400, 280 350 T 450 280 T 600 250 T 720 240"
+                        />
                         <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#DC2626"/>
                         <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">90</text>
                       </g>
