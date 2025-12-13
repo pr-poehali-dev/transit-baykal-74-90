@@ -26,28 +26,30 @@ const Index = () => {
     },
     {
       number: '90',
-      name: 'Микрорайон Юбилейный - Синюшина гора',
-      duration: '42 мин',
-      stops: 22,
-      workingHours: '06:30 - 22:30',
+      name: 'Аэропорт - Аэропорт (кольцевой)',
+      duration: '55 мин',
+      stops: 24,
+      workingHours: '06:00 - 23:00',
       interval: '15-20 мин',
-      description: 'Маршрут связывает спальные районы с центральной частью города',
-      keyStops: ['Юбилейный', 'Карла Маркса', 'Площадь Кирова', 'Центральный рынок', 'Синюшина гора']
+      description: 'Кольцевой маршрут из аэропорта через центр города по Лермонтова и Байкальской',
+      keyStops: ['Аэропорт', 'Рынок', 'Лермонтова', 'Байкальская', 'Аэропорт']
     }
   ];
 
   const tariffs = [
-    { type: 'Разовый билет', price: '35 ₽', description: 'Одна поездка на любом маршруте' },
-    { type: 'Проездной на 10 поездок', price: '320 ₽', description: 'Экономия 30 рублей' },
-    { type: 'Месячный проездной', price: '1200 ₽', description: 'Безлимитные поездки 30 дней' },
-    { type: 'Студенческий', price: '900 ₽', description: 'При предъявлении студенческого' },
-    { type: 'Льготный', price: '600 ₽', description: 'Для пенсионеров и инвалидов' }
+    { type: 'Наличные до 20:00', price: '40 ₽', description: 'Оплата наличными в дневное время' },
+    { type: 'Наличные после 20:00', price: '45 ₽', description: 'Оплата наличными в вечернее время' },
+    { type: 'Карта БайкалАвтоТранс', price: '30 ₽', description: 'Поездка по карте в любое время' }
   ];
 
   const faqItems = [
     {
-      question: 'Как купить проездной билет?',
-      answer: 'Проездные билеты можно приобрести у водителя автобуса, в киосках на остановках, а также через мобильное приложение "Транспорт Иркутска".'
+      question: 'Как получить карту БайкалАвтоТранс?',
+      answer: 'Транспортную карту можно приобрести у водителя автобуса или в киосках на остановках. Пополнить баланс карты можно наличными у водителя.'
+    },
+    {
+      question: 'Какая стоимость проезда?',
+      answer: 'Наличными: 40₽ до 20:00 и 45₽ после 20:00. По карте БайкалАвтоТранс — 30₽ в любое время. Экономьте 10-15₽ на каждой поездке с картой!'
     },
     {
       question: 'Работают ли автобусы в выходные дни?',
@@ -59,11 +61,11 @@ const Index = () => {
     },
     {
       question: 'Есть ли льготы для детей?',
-      answer: 'Дети до 7 лет путешествуют бесплатно в сопровождении взрослого. Школьники от 7 до 18 лет могут приобрести льготный проездной по предъявлении справки из школы.'
+      answer: 'Дети до 7 лет путешествуют бесплатно в сопровождении взрослого. Для детей старше 7 лет действует общий тариф.'
     },
     {
       question: 'Как отследить местоположение автобуса?',
-      answer: 'Используйте нашу интерактивную карту на сайте или мобильное приложение для отслеживания автобусов в режиме реального времени.'
+      answer: 'Используйте интерактивную карту на irkbus.ru или наш сайт для отслеживания автобусов в режиме реального времени.'
     }
   ];
 
@@ -109,7 +111,7 @@ const Index = () => {
                 Надежный общественный транспорт на маршрутах №74 и №90. 
                 Комфортно, безопасно, вовремя.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button size="lg" onClick={() => scrollToSection('routes')} className="text-lg">
                   <Icon name="MapPin" className="mr-2" size={20} />
                   Посмотреть маршруты
@@ -118,6 +120,13 @@ const Index = () => {
                   <Icon name="Clock" className="mr-2" size={20} />
                   Расписание
                 </Button>
+              </div>
+              <div className="mt-8 max-w-2xl mx-auto">
+                <img 
+                  src="https://cdn.poehali.dev/files/1000120798.jpg" 
+                  alt="Транспортная карта БайкалАвтоТранс" 
+                  className="w-full rounded-lg shadow-2xl hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           </div>
@@ -194,8 +203,18 @@ const Index = () => {
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Интерактивная карта маршрутов</h2>
-              <p className="text-muted-foreground text-lg">Отслеживайте автобусы в режиме реального времени</p>
+              <p className="text-muted-foreground text-lg">Отслеживайте автобусы в режиме реального времени на irkbus.ru</p>
             </div>
+            <Card className="overflow-hidden mb-8">
+              <CardContent className="p-0">
+                <iframe 
+                  src="https://irkbus.ru" 
+                  className="w-full h-[600px] border-0"
+                  title="Интерактивная карта IrkBus"
+                  loading="lazy"
+                />
+              </CardContent>
+            </Card>
             <Card className="overflow-hidden">
               <CardContent className="p-0">
                 <div className="relative w-full h-[500px] bg-gradient-to-br from-blue-50 to-blue-100">
@@ -238,18 +257,18 @@ const Index = () => {
                     
                     <g id="route-90">
                       <path 
-                        d="M 100 450 L 180 420 L 260 380 L 340 340 L 420 310 L 500 300 L 580 310 L 660 330 L 740 360" 
+                        d="M 50 80 L 120 120 L 200 160 L 280 200 L 360 240 L 440 270 L 520 290 L 600 280 L 680 250 L 720 200 L 700 140 L 640 100 L 560 80 L 480 70 L 400 65 L 320 70 L 240 80 L 160 85 L 80 85 L 50 80" 
                         stroke="#DC2626" 
                         strokeWidth="4" 
                         fill="none"
                         strokeDasharray="8,4"
                       />
                       {[
-                        { x: 100, y: 450, label: 'Юбилейный' },
-                        { x: 260, y: 380, label: 'Карла Маркса' },
-                        { x: 420, y: 310, label: 'Пл. Кирова' },
-                        { x: 580, y: 310, label: 'Центр. рынок' },
-                        { x: 740, y: 360, label: 'Синюшина гора' }
+                        { x: 50, y: 80, label: 'Аэропорт' },
+                        { x: 280, y: 200, label: 'Рынок' },
+                        { x: 440, y: 270, label: 'Лермонтова' },
+                        { x: 680, y: 250, label: 'Байкальская' },
+                        { x: 640, y: 100, label: 'Обратно' }
                       ].map((stop, idx) => (
                         <g key={idx}>
                           <circle cx={stop.x} cy={stop.y} r="7" fill="#DC2626" stroke="white" strokeWidth="2"/>
@@ -272,9 +291,9 @@ const Index = () => {
                       </g>
                       <g>
                         <animateMotion 
-                          dur="16s" 
+                          dur="18s" 
                           repeatCount="indefinite"
-                          path="M 100 450 L 180 420 L 260 380 L 340 340 L 420 310 L 500 300 L 580 310 L 660 330 L 740 360"
+                          path="M 50 80 L 120 120 L 200 160 L 280 200 L 360 240 L 440 270 L 520 290 L 600 280 L 680 250 L 720 200 L 700 140 L 640 100 L 560 80 L 480 70 L 400 65 L 320 70 L 240 80 L 160 85 L 80 85 L 50 80"
                         />
                         <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#DC2626"/>
                         <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">90</text>
