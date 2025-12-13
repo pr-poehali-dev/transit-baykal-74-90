@@ -141,7 +141,7 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {routes.map((route) => (
                 <Card key={route.number} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardHeader className="bg-gradient-to-r from-primary to-primary/80 text-white">
+                  <CardHeader className={`bg-gradient-to-r text-white ${route.number === '90' ? 'from-destructive to-destructive/80' : 'from-primary to-primary/80'}`}>
                     <div className="flex items-center justify-between">
                       <div>
                         <CardTitle className="text-3xl font-bold mb-2">№{route.number}</CardTitle>
@@ -154,28 +154,28 @@ const Index = () => {
                     <p className="text-muted-foreground mb-6">{route.description}</p>
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center gap-2">
-                        <Icon name="Clock" size={20} className="text-primary" />
+                        <Icon name="Clock" size={20} className={route.number === '90' ? 'text-destructive' : 'text-primary'} />
                         <div>
                           <p className="text-xs text-muted-foreground">Время в пути</p>
                           <p className="font-semibold">{route.duration}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Icon name="MapPin" size={20} className="text-primary" />
+                        <Icon name="MapPin" size={20} className={route.number === '90' ? 'text-destructive' : 'text-primary'} />
                         <div>
                           <p className="text-xs text-muted-foreground">Остановок</p>
                           <p className="font-semibold">{route.stops}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Icon name="CalendarClock" size={20} className="text-primary" />
+                        <Icon name="CalendarClock" size={20} className={route.number === '90' ? 'text-destructive' : 'text-primary'} />
                         <div>
                           <p className="text-xs text-muted-foreground">Часы работы</p>
                           <p className="font-semibold">{route.workingHours}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Icon name="Timer" size={20} className="text-primary" />
+                        <Icon name="Timer" size={20} className={route.number === '90' ? 'text-destructive' : 'text-primary'} />
                         <div>
                           <p className="text-xs text-muted-foreground">Интервал</p>
                           <p className="font-semibold">{route.interval}</p>
@@ -205,7 +205,7 @@ const Index = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Интерактивная карта маршрутов</h2>
               <p className="text-muted-foreground text-lg">Отслеживайте автобусы в режиме реального времени на irkbus.ru</p>
             </div>
-            <Card className="overflow-hidden mb-8">
+            <Card className="overflow-hidden">
               <CardContent className="p-0">
                 <iframe 
                   src="http://www.irkbus.ru/index.php?nomobile=1" 
@@ -213,102 +213,6 @@ const Index = () => {
                   title="Интерактивная карта IrkBus"
                   loading="lazy"
                 />
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden">
-              <CardContent className="p-0">
-                <div className="relative w-full h-[500px] bg-gradient-to-br from-blue-50 to-blue-100">
-                  <svg className="w-full h-full" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0e0e0" strokeWidth="0.5"/>
-                      </pattern>
-                    </defs>
-                    
-                    <rect width="800" height="500" fill="url(#grid)"/>
-                    
-                    <g id="route-74">
-                      <path 
-                        d="M 120 100 L 180 160 L 240 220 L 320 260 L 380 280 L 440 300 L 500 330 L 580 360 L 640 380 L 680 340 L 720 280 L 700 200 L 640 140 L 560 100 L 480 80 L 400 70 L 320 80 L 240 90 L 180 95 L 120 100" 
-                        stroke="#0EA5E9" 
-                        strokeWidth="4" 
-                        fill="none"
-                        strokeDasharray="8,4"
-                      />
-                      {[
-                        { x: 120, y: 100, label: 'Первомайский' },
-                        { x: 240, y: 220, label: 'Институт МВД' },
-                        { x: 380, y: 280, label: 'Сверд. рынок' },
-                        { x: 500, y: 330, label: 'Сквер Кирова' },
-                        { x: 640, y: 380, label: 'Филармония' },
-                        { x: 720, y: 280, label: 'Байкальская' },
-                        { x: 640, y: 140, label: 'Плотина ГЭС' },
-                        { x: 400, y: 70, label: 'Лермонтова' },
-                        { x: 180, y: 95, label: 'Университет.' }
-                      ].map((stop, idx) => (
-                        <g key={idx}>
-                          <circle cx={stop.x} cy={stop.y} r="7" fill="#0EA5E9" stroke="white" strokeWidth="2"/>
-                          <text x={stop.x} y={stop.y - 12} fontSize="11" fill="#0EA5E9" fontWeight="600" textAnchor="middle">
-                            {stop.label}
-                          </text>
-                        </g>
-                      ))}
-                    </g>
-                    
-                    <g id="route-90">
-                      <path 
-                        d="M 50 80 L 120 120 L 200 160 L 280 200 L 360 240 L 440 270 L 520 290 L 600 280 L 680 250 L 720 200 L 700 140 L 640 100 L 560 80 L 480 70 L 400 65 L 320 70 L 240 80 L 160 85 L 80 85 L 50 80" 
-                        stroke="#DC2626" 
-                        strokeWidth="4" 
-                        fill="none"
-                        strokeDasharray="8,4"
-                      />
-                      {[
-                        { x: 50, y: 80, label: 'Аэропорт' },
-                        { x: 280, y: 200, label: 'Рынок' },
-                        { x: 440, y: 270, label: 'Лермонтова' },
-                        { x: 680, y: 250, label: 'Байкальская' },
-                        { x: 640, y: 100, label: 'Обратно' }
-                      ].map((stop, idx) => (
-                        <g key={idx}>
-                          <circle cx={stop.x} cy={stop.y} r="7" fill="#DC2626" stroke="white" strokeWidth="2"/>
-                          <text x={stop.x} y={stop.y + 20} fontSize="11" fill="#DC2626" fontWeight="600" textAnchor="middle">
-                            {stop.label}
-                          </text>
-                        </g>
-                      ))}
-                    </g>
-                    
-                    <g id="buses">
-                      <g>
-                        <animateMotion 
-                          dur="20s" 
-                          repeatCount="indefinite"
-                          path="M 120 100 L 180 160 L 240 220 L 320 260 L 380 280 L 440 300 L 500 330 L 580 360 L 640 380 L 680 340 L 720 280 L 700 200 L 640 140 L 560 100 L 480 80 L 400 70 L 320 80 L 240 90 L 180 95 L 120 100"
-                        />
-                        <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#0EA5E9"/>
-                        <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">74</text>
-                      </g>
-                      <g>
-                        <animateMotion 
-                          dur="18s" 
-                          repeatCount="indefinite"
-                          path="M 50 80 L 120 120 L 200 160 L 280 200 L 360 240 L 440 270 L 520 290 L 600 280 L 680 250 L 720 200 L 700 140 L 640 100 L 560 80 L 480 70 L 400 65 L 320 70 L 240 80 L 160 85 L 80 85 L 50 80"
-                        />
-                        <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#DC2626"/>
-                        <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">90</text>
-                      </g>
-                    </g>
-                    
-                    <g id="legend" transform="translate(20, 20)">
-                      <rect x="0" y="0" width="180" height="80" fill="white" stroke="#e0e0e0" strokeWidth="1" rx="4"/>
-                      <line x1="15" y1="25" x2="45" y2="25" stroke="#0EA5E9" strokeWidth="3" strokeDasharray="6,3"/>
-                      <text x="55" y="30" fontSize="14" fill="#333">Маршрут №74</text>
-                      <line x1="15" y1="55" x2="45" y2="55" stroke="#DC2626" strokeWidth="3" strokeDasharray="6,3"/>
-                      <text x="55" y="60" fontSize="14" fill="#333">Маршрут №90</text>
-                    </g>
-                  </svg>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -403,7 +307,7 @@ const Index = () => {
                     <div className="flex items-start gap-3">
                       <Icon name="Phone" className="text-primary mt-1" size={20} />
                       <div>
-                        <p className="font-semibold">+7 (3952) 500-100</p>
+                        <p className="font-semibold">666-206</p>
                         <p className="text-sm text-muted-foreground">Круглосуточно</p>
                       </div>
                     </div>
@@ -417,7 +321,7 @@ const Index = () => {
                     <div className="flex items-start gap-3">
                       <Icon name="MapPin" className="text-primary mt-1" size={20} />
                       <div>
-                        <p className="font-semibold">ул. Транспортная, 15</p>
+                        <p className="font-semibold">ул. Култукская, 107/1</p>
                         <p className="text-sm text-muted-foreground">г. Иркутск, 664000</p>
                       </div>
                     </div>
@@ -438,7 +342,7 @@ const Index = () => {
                     <div className="flex items-start gap-3">
                       <Icon name="MessageSquare" className="text-primary mt-1" size={20} />
                       <div>
-                        <p className="font-semibold">+7 (3952) 500-101</p>
+                        <p className="font-semibold">666-206</p>
                         <p className="text-sm text-muted-foreground">Жалобы и предложения</p>
                       </div>
                     </div>
