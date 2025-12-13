@@ -16,23 +16,23 @@ const Index = () => {
   const routes = [
     {
       number: '74',
-      name: 'Жилкомплекс - ЖБИ',
-      duration: '45 мин',
-      stops: 24,
+      name: 'Первомайский - Первомайский (кольцевой)',
+      duration: '60 мин',
+      stops: 28,
       workingHours: '06:00 - 23:00',
       interval: '12-15 мин',
-      description: 'Основной маршрут, связывающий жилые районы с промышленной зоной',
-      keyStops: ['Жилкомплекс', 'Площадь Труда', 'ТРЦ Сибирь', 'Автовокзал', 'Завод ЖБИ']
+      description: 'Кольцевой маршрут, соединяющий Первомайский микрорайон с центром города через основные транспортные узлы',
+      keyStops: ['Первомайский м-н', 'Институт МВД', 'Свердловский рынок', 'Сквер Кирова', 'Филармония', 'Байкальская', 'Плотина ГЭС', 'Лермонтова', 'Университетский м-н']
     },
     {
       number: '90',
-      name: 'Микрорайон Солнечный - Центральный рынок',
-      duration: '38 мин',
-      stops: 19,
+      name: 'Микрорайон Юбилейный - Синюшина гора',
+      duration: '42 мин',
+      stops: 22,
       workingHours: '06:30 - 22:30',
       interval: '15-20 мин',
-      description: 'Связывает новые районы с центром города и рыночной зоной',
-      keyStops: ['Солнечный', 'Университет', 'Центр', 'Филармония', 'Центральный рынок']
+      description: 'Маршрут связывает спальные районы с центральной частью города',
+      keyStops: ['Юбилейный', 'Карла Маркса', 'Площадь Кирова', 'Центральный рынок', 'Синюшина гора']
     }
   ];
 
@@ -71,9 +71,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Bus" className="text-primary" size={32} />
-            <span className="text-xl font-bold text-foreground">БайкалАвтоТранс</span>
+          <div className="flex items-center gap-3">
+            <img src="https://cdn.poehali.dev/files/1000114044.jpg" alt="БайкалАвтоТранс" className="h-12" />
           </div>
           <nav className="hidden md:flex items-center gap-6">
             {[
@@ -211,22 +210,26 @@ const Index = () => {
                     
                     <g id="route-74">
                       <path 
-                        d="M 100 400 Q 150 350, 200 300 T 350 200 T 500 150 T 650 120" 
+                        d="M 120 100 L 180 160 L 240 220 L 320 260 L 380 280 L 440 300 L 500 330 L 580 360 L 640 380 L 680 340 L 720 280 L 700 200 L 640 140 L 560 100 L 480 80 L 400 70 L 320 80 L 240 90 L 180 95 L 120 100" 
                         stroke="#0EA5E9" 
                         strokeWidth="4" 
                         fill="none"
                         strokeDasharray="8,4"
                       />
                       {[
-                        { x: 100, y: 400, label: 'Жилкомплекс' },
-                        { x: 200, y: 300, label: 'Площадь Труда' },
-                        { x: 350, y: 200, label: 'ТРЦ Сибирь' },
-                        { x: 500, y: 150, label: 'Автовокзал' },
-                        { x: 650, y: 120, label: 'ЖБИ' }
+                        { x: 120, y: 100, label: 'Первомайский' },
+                        { x: 240, y: 220, label: 'Институт МВД' },
+                        { x: 380, y: 280, label: 'Сверд. рынок' },
+                        { x: 500, y: 330, label: 'Сквер Кирова' },
+                        { x: 640, y: 380, label: 'Филармония' },
+                        { x: 720, y: 280, label: 'Байкальская' },
+                        { x: 640, y: 140, label: 'Плотина ГЭС' },
+                        { x: 400, y: 70, label: 'Лермонтова' },
+                        { x: 180, y: 95, label: 'Университет.' }
                       ].map((stop, idx) => (
                         <g key={idx}>
-                          <circle cx={stop.x} cy={stop.y} r="8" fill="#0EA5E9" stroke="white" strokeWidth="2"/>
-                          <text x={stop.x} y={stop.y - 15} fontSize="12" fill="#0EA5E9" fontWeight="600" textAnchor="middle">
+                          <circle cx={stop.x} cy={stop.y} r="7" fill="#0EA5E9" stroke="white" strokeWidth="2"/>
+                          <text x={stop.x} y={stop.y - 12} fontSize="11" fill="#0EA5E9" fontWeight="600" textAnchor="middle">
                             {stop.label}
                           </text>
                         </g>
@@ -235,22 +238,22 @@ const Index = () => {
                     
                     <g id="route-90">
                       <path 
-                        d="M 150 450 Q 200 400, 280 350 T 450 280 T 600 250 T 720 240" 
+                        d="M 100 450 L 180 420 L 260 380 L 340 340 L 420 310 L 500 300 L 580 310 L 660 330 L 740 360" 
                         stroke="#DC2626" 
                         strokeWidth="4" 
                         fill="none"
                         strokeDasharray="8,4"
                       />
                       {[
-                        { x: 150, y: 450, label: 'Солнечный' },
-                        { x: 280, y: 350, label: 'Университет' },
-                        { x: 450, y: 280, label: 'Центр' },
-                        { x: 600, y: 250, label: 'Филармония' },
-                        { x: 720, y: 240, label: 'Центр. рынок' }
+                        { x: 100, y: 450, label: 'Юбилейный' },
+                        { x: 260, y: 380, label: 'Карла Маркса' },
+                        { x: 420, y: 310, label: 'Пл. Кирова' },
+                        { x: 580, y: 310, label: 'Центр. рынок' },
+                        { x: 740, y: 360, label: 'Синюшина гора' }
                       ].map((stop, idx) => (
                         <g key={idx}>
-                          <circle cx={stop.x} cy={stop.y} r="8" fill="#DC2626" stroke="white" strokeWidth="2"/>
-                          <text x={stop.x} y={stop.y + 25} fontSize="12" fill="#DC2626" fontWeight="600" textAnchor="middle">
+                          <circle cx={stop.x} cy={stop.y} r="7" fill="#DC2626" stroke="white" strokeWidth="2"/>
+                          <text x={stop.x} y={stop.y + 20} fontSize="11" fill="#DC2626" fontWeight="600" textAnchor="middle">
                             {stop.label}
                           </text>
                         </g>
@@ -260,18 +263,18 @@ const Index = () => {
                     <g id="buses">
                       <g>
                         <animateMotion 
-                          dur="15s" 
+                          dur="20s" 
                           repeatCount="indefinite"
-                          path="M 100 400 Q 150 350, 200 300 T 350 200 T 500 150 T 650 120"
+                          path="M 120 100 L 180 160 L 240 220 L 320 260 L 380 280 L 440 300 L 500 330 L 580 360 L 640 380 L 680 340 L 720 280 L 700 200 L 640 140 L 560 100 L 480 80 L 400 70 L 320 80 L 240 90 L 180 95 L 120 100"
                         />
                         <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#0EA5E9"/>
                         <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">74</text>
                       </g>
                       <g>
                         <animateMotion 
-                          dur="18s" 
+                          dur="16s" 
                           repeatCount="indefinite"
-                          path="M 150 450 Q 200 400, 280 350 T 450 280 T 600 250 T 720 240"
+                          path="M 100 450 L 180 420 L 260 380 L 340 340 L 420 310 L 500 300 L 580 310 L 660 330 L 740 360"
                         />
                         <rect x="-12" y="-8" width="24" height="16" rx="2" fill="#DC2626"/>
                         <text x="0" y="4" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">90</text>
@@ -438,9 +441,8 @@ const Index = () => {
       <footer className="border-t py-8 bg-muted/50">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Icon name="Bus" className="text-primary" size={24} />
-              <span className="font-semibold">БайкалАвтоТранс</span>
+            <div className="flex items-center gap-3">
+              <img src="https://cdn.poehali.dev/files/1000114044.jpg" alt="БайкалАвтоТранс" className="h-8" />
             </div>
             <p className="text-sm text-muted-foreground">
               © 2024 БайкалАвтоТранс. Все права защищены.
