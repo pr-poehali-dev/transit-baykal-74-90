@@ -208,7 +208,7 @@ const Index = () => {
             <Card className="overflow-hidden mb-8">
               <CardContent className="p-0">
                 <iframe 
-                  src="https://irkbus.ru" 
+                  src="http://www.irkbus.ru/index.php?nomobile=1" 
                   className="w-full h-[600px] border-0"
                   title="Интерактивная карта IrkBus"
                   loading="lazy"
